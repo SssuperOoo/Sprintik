@@ -1,0 +1,12 @@
+__pycache__/
+.idea/
+.venv/
+# Ignore environment file
+pereval/pereval/.env
+
+# Ignore media files
+pereval/media/
+
+
+# Ignore database
+*.sqlite3
