@@ -31,16 +31,15 @@ class PerevalImagesSerializer(serializers.ModelSerializer):
 
 
 class PerevalSerializer(WritableNestedModelSerializer):
-    add_time = serializers.DateTimeField(format="%d-%m-%Y %H:%M:%S", read_only=True)
     user = UsersSerializer()
     coord = CoordSerializer()
     level = LevelSerializer()
     images = PerevalImagesSerializer(many=True)
-    status = serializers.CharField(read_only=True)
+
     class Meta:
         model = Pereval
         depth = 1
-        fields = ['id', 'beauty_title', 'title', 'other_title', 'connect', 'add_time', 'status', 'user', 'coord', 'level', 'images']
+        fields = ['beauty_title', 'title', 'other_title', 'connect', 'add_time', 'status', 'user', 'coord', 'level', 'images']
 
     def create(self, validated_data, **kwargs):
         user = validated_data.pop('user')
