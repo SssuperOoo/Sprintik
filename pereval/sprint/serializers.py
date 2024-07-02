@@ -62,3 +62,5 @@ class PerevalSerializer(WritableNestedModelSerializer):
         return pereval
 
 
+def pukpuk():
+    pass
