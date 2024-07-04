@@ -40,7 +40,7 @@ class PerevalViewset(viewsets.ModelViewSet):
                 return Response(
                     {
                         'status': status.HTTP_200_OK,
-                        'message': 'Успех!',
+                        'message': 'Отправлено успешно',
                         'id': serializer.instance.pk,
                     }
                 )
