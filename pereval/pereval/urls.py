@@ -15,6 +15,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
+from django.views.generic import TemplateView
 from rest_framework import routers
 
 from django.urls import path, include
@@ -29,7 +30,12 @@ router.register(r'images', PerevalImageViewset, basename='images')
 router.register(r'Pereval', PerevalViewset, basename='Pereval')
 
 urlpatterns = [
-   path('admin/', admin.site.urls),
-   path('', include(router.urls))
+    path('admin/', admin.site.urls),
+    path('', include(router.urls)),
+    # path('submitData/', SubmitData.as_view(), name='submitData'),
+    path('swagger-ui/', TemplateView.as_view(
+        template_name='swagger.html',
+        extra_context={'schema_url': 'openapi-schema'}
+    ), name='swagger-ui'),
 
 ]

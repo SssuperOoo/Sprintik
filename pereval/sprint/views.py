@@ -1,25 +1,31 @@
 from django.shortcuts import render
 from rest_framework import viewsets
+from rest_framework.views import APIView
 from .serializers import *
 import django_filters
 from rest_framework import status
 from rest_framework.response import Response
 
+
 class UserViewset(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UsersSerializer
+
 
 class CoordViewset(viewsets.ModelViewSet):
     queryset = Coord.objects.all()
     serializer_class = CoordSerializer
 
+
 class LevelViewset(viewsets.ModelViewSet):
     queryset = Level.objects.all()
     serializer_class = LevelSerializer
 
+
 class PerevalImageViewset(viewsets.ModelViewSet):
     queryset = PerevalImages.objects.all()
     serializer_class = PerevalImagesSerializer
+
 
 class PerevalViewset(viewsets.ModelViewSet):
     queryset = Pereval.objects.all()
@@ -57,3 +63,36 @@ class PerevalViewset(viewsets.ModelViewSet):
                     }
                 )
         return super().create(request, *args, **kwargs)
+
+# class SubmitData(APIView):  # А нужен ли нам велосипед? Я понимаю заказчика дословно. Или ему все равно как метод называется?
+#     queryset = Pereval.objects.all()
+#     serializer_class = PerevalSerializer
+#
+#     def post(self, request, *args, **kwargs):
+#         serializer = PerevalSerializer(data=request.data)
+#         if serializer.is_valid():
+#             serializer.save()
+#             return Response(
+#                 {
+#                     'status': status.HTTP_200_OK,
+#                     'message': 'Отправлено успешно',
+#                     'id': serializer.instance.pk,
+#                 }
+#             )
+#         if status.HTTP_400_BAD_REQUEST:
+#             return Response(
+#                 {
+#                     'status': status.HTTP_400_BAD_REQUEST,
+#                     'message': 'Некорректный запрос',
+#                     'id': None,
+#                 }
+#             )
+#         if status.HTTP_500_INTERNAL_SERVER_ERROR:
+#             return Response(
+#                 {
+#                     'status': status.HTTP_500_INTERNAL_SERVER_ERROR,
+#                     'message': 'Ошибка при выполнении операции',
+#                     'id': None,
+#                 }
+#             )
+#

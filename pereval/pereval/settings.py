@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 import os
 from pathlib import Path
-from dotenv import  load_dotenv, find_dotenv
+from dotenv import load_dotenv, find_dotenv
 
 load_dotenv(find_dotenv())
 
@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     'sprint',
     "rest_framework",
     'django.contrib.sites',
-    'django_filters'
+    'django_filters',
 ]
 SITE_ID = 1
 
@@ -130,3 +130,8 @@ MEDIA_URL = '/media/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# прекрасная переменная, для подключения пагинаций, какой вывод может быть и т.д. с огромным функционалом
+REST_FRAMEWORK = {
+   'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
+}

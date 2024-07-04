@@ -14,10 +14,8 @@ class Pereval(models.Model):
     connect = models.TextField()
     add_time = models.DateTimeField(auto_now_add=True)
     status = models.CharField(max_length=10, choices=CHOICE_STATUS, default="new")
-
     user = models.ForeignKey('User', on_delete=models.CASCADE, related_name='users')
-    coord = models.ForeignKey('Coord', on_delete=models.CASCADE,
-                              related_name='coord')  # Или все же OnetoOneField т.к. у одного перевала могут быть одни координаты? Или разные входы на перевал с разными координатами?
+    coord = models.ForeignKey('Coord', on_delete=models.CASCADE, related_name='coord')
     level = models.ForeignKey('Level', on_delete=models.CASCADE, related_name='level')
 
     def __str__(self):
@@ -51,17 +49,17 @@ class Level(models.Model):
         ('3A', '3A'),
         ('4A', '4A'),
     )
-    winter = models.CharField(max_length=2, choices=CHOICE_LEVEL, default="1A",blank=True)
-    summer = models.CharField(max_length=2, choices=CHOICE_LEVEL, default="1A",blank=True)
-    autumn = models.CharField(max_length=2, choices=CHOICE_LEVEL, default="1A",blank=True)
-    spring = models.CharField(max_length=2, choices=CHOICE_LEVEL, default="1A",blank=True)
+    winter = models.CharField(max_length=2, choices=CHOICE_LEVEL, default="1A", blank=True)
+    summer = models.CharField(max_length=2, choices=CHOICE_LEVEL, default="1A", blank=True)
+    autumn = models.CharField(max_length=2, choices=CHOICE_LEVEL, default="1A", blank=True)
+    spring = models.CharField(max_length=2, choices=CHOICE_LEVEL, default="1A", blank=True)
 
     def __str__(self):
         return f"Winter: {self.winter}, Summer: {self.summer}, Autumn: {self.autumn}, Spring: {self.spring}"
 
 
 class PerevalImages(models.Model):
-    pereval = models.ForeignKey(Pereval, on_delete=models.CASCADE, related_name='photos')
+    pereval = models.ForeignKey(Pereval, on_delete=models.CASCADE, related_name='images')
     title = models.CharField(max_length=255)
     date_added = models.DateTimeField(auto_now_add=True)
     img = models.ImageField(upload_to='photos', blank=True)

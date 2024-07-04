@@ -5,6 +5,7 @@ from .models import *
 from rest_framework import serializers
 from drf_writable_nested import WritableNestedModelSerializer
 
+
 class UsersSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
@@ -25,6 +26,7 @@ class LevelSerializer(serializers.ModelSerializer):
 
 class PerevalImagesSerializer(serializers.ModelSerializer):
     img = serializers.URLField()
+
     class Meta:
         model = PerevalImages
         fields = ['title', 'img']
@@ -39,7 +41,8 @@ class PerevalSerializer(WritableNestedModelSerializer):
     class Meta:
         model = Pereval
         depth = 1
-        fields = ['beauty_title', 'title', 'other_title', 'connect', 'add_time', 'status', 'user', 'coord', 'level', 'images']
+        fields = ['status','beauty_title', 'title', 'other_title', 'connect', 'add_time', 'user', 'coord', 'level',
+                  'images']
 
     def create(self, validated_data, **kwargs):
         user = validated_data.pop('user')
@@ -51,15 +54,11 @@ class PerevalSerializer(WritableNestedModelSerializer):
 
         coord = Coord.objects.create(**coord)
         level = Level.objects.create(**level)
-        pereval = Pereval.objects.create(**validated_data, user=user, coord=coord, level=level, status='new')
+        pereval = Pereval.objects.create(**validated_data, user=user, coord=coord, level=level)
 
         for image in images:
             data = image.pop('img')
             title = image.pop('title')
-            PerevalImages.objects.create(img=data, perevaladded=pereval, title=title)
+            PerevalImages.objects.create(img=data, pereval=pereval, title=title)
 
         return pereval
-
-
-def pukpuk():
-    pass
