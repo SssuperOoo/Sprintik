@@ -50,10 +50,12 @@ class PerevalSerializer(WritableNestedModelSerializer):
         level = validated_data.pop('level')
         images = validated_data.pop('images')
 
+        # Проверяем user, если точно такой же существует в БД, нового не создаем
         user, created = User.objects.get_or_create(**user)
 
         coord = Coord.objects.create(**coord)
         level = Level.objects.create(**level)
+
         pereval = Pereval.objects.create(**validated_data, user=user, coord=coord, level=level)
 
         for image in images:
