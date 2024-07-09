@@ -41,7 +41,7 @@ class PerevalSerializer(WritableNestedModelSerializer):
     class Meta:
         model = Pereval
         depth = 1
-        fields = ['status','beauty_title', 'title', 'other_title', 'connect', 'add_time', 'user', 'coord', 'level',
+        fields = ['status', 'beauty_title', 'title', 'other_title', 'connect', 'add_time', 'user', 'coord', 'level',
                   'images']
 
     def create(self, validated_data, **kwargs):
