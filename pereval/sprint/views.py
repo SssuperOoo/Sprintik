@@ -64,4 +64,26 @@ class PerevalViewset(viewsets.ModelViewSet):
                 )
         return super().create(request, *args, **kwargs)
 
+    def partial_update(self, request, *args, **kwargs):
+        pereval = self.get_object()
+        if pereval.status == "new":
+            serializer = PerevalSerializer(pereval, data=request.data, partial=True)
+            if serializer.is_valid():
+                serializer.save()
+                return Response({
+                    'state': '1',
+                    'massage': "Запись изменена",
+                })
+
+            else:
+                return Response({
+                    'state': '0',
+                    'massage': serializer.errors,
+                })
+        else:
+            return Response({
+                'state': '0',
+                'massage': f"Отклонено. Причина {pereval.get_status_display()} ",
+            })
+
 
