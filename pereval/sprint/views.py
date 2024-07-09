@@ -30,6 +30,7 @@ class PerevalImageViewset(viewsets.ModelViewSet):
 class PerevalViewset(viewsets.ModelViewSet):
     queryset = Pereval.objects.all()
     serializer_class = PerevalSerializer
+    filterset_fields = ['user__email']
 
     def create(self, request, *args, **kwargs):
         if self.action == 'create':
