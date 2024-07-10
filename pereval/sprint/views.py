@@ -79,9 +79,9 @@ class PerevalViewset(viewsets.ModelViewSet):
             else:
                 print(serializer.errors)
             return Response({
-                    'state': '0',
-                    'massage': serializer.errors,
-                })
+                'state': '0',
+                'massage': serializer.errors,
+            })
         else:
             return Response({
                 'state': '0',

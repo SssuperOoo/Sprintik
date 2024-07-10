@@ -125,7 +125,7 @@ class PerevalApiTestCase(APITestCase):
         data = {
             "status": "new",
             "beauty_title": "Пример",
-            "title": "Обновленный перевал",
+            "title": "Еще раз обновленный перевал",
             "other_title": "Еще пример",
             "connect": "Описание соединения",
             "add_time": "2024-07-10T10:24:31.558345Z",
@@ -161,7 +161,7 @@ class PerevalApiTestCase(APITestCase):
         response = self.client.patch(url, data, format='json')
         self.pereval.refresh_from_db()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(self.pereval.title, "Обновленный перевал")
+        self.assertEqual(self.pereval.title, "Еще раз обновленный перевал")
 
         print(f"Pereval ID: {self.pereval.id}")
         print(f"Title: {self.pereval.title}")
@@ -171,7 +171,6 @@ class PerevalApiTestCase(APITestCase):
         print(f"Coordinates: {self.pereval.coord}")
         print(f"Level: {self.pereval.level}")
         print(f"Images: {[str(img) for img in self.pereval.images.all()]}")
-
 
     def test_check_pereval(self):
         expected_data = {
