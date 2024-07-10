@@ -11,7 +11,7 @@ class Pereval(models.Model):
     beauty_title = models.CharField(max_length=255)
     title = models.CharField(max_length=255)
     other_title = models.CharField(max_length=255)
-    connect = models.TextField()
+    connect = models.TextField(blank=True)
     add_time = models.DateTimeField(auto_now_add=True)
     status = models.CharField(max_length=10, choices=CHOICE_STATUS, default="new")
     user = models.ForeignKey('User', on_delete=models.CASCADE, related_name='users')

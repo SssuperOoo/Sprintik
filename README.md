@@ -20,7 +20,6 @@ Pereval Rest API
 POST/submitData/
 принимает JSON в теле запроса с информацией о перевале. Пример JSON-а:
 
-
 { 
 "beauty_title": "гора", 
 "title": "Эверест", 
@@ -101,9 +100,17 @@ GET /submitData/?user_id__email=<email>
 В качестве реализации использована фильтрация по адресу электронной почты пользователя с помощью пакета django-filter
 
 
+
 Документация сгенерирована с помощью пакета drf-yasg
 Документация swagger: http://127.0.0.1:8000/swagger/
+
 Документация redoc: http://127.0.0.1:8000/redoc/
+
+
+
+URLS:
+
+
 
 Дополнительно:
     1. Реализовано повторное использование существующего объекта модели PassUser при создания нового объекта модели Pereval. Если запрос (метод POST/Pereval/) на добавление записи отправляет пользователь, ранее уже отправлявший такой запрос (определяется по всем данным пользователя), то для текущей записи используются ранее записанные данные пользователя, а не создается новый пользователь (объект модели PassUser).
@@ -113,4 +120,5 @@ GET /submitData/?user_id__email=<email>
 API Pereval: https://olegafonick.pythonanywhere.com/Pereval/
 Документация swagger: https://olegafonick.pythonanywhere.com/swagger/
 Документация redoc: https://olegafonick.pythonanywhere.com/redoc/
+
 
