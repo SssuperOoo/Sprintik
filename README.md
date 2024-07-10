@@ -124,9 +124,9 @@ ______
 ______
 
 ***Проект опубликован на хостинге pythonanywhere.com***
-*API **Pereval**: *<br/>
-*Документация **swagger**: <br/>*
-*Документация **redoc**: *
+*API **Pereval**: https://supero.pythonanywhere.com/submitData/*<br/>
+*Документация **swagger**:https://supero.pythonanywhere.com/swagger<br/>*
+*Документация **redoc**: https://supero.pythonanywhere.com/redoc/*
 ______
 ***Отчет о покрытии тестами:***
 ![img_6.png](img_6.png)
