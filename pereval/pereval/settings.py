@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     "rest_framework",
     'django.contrib.sites',
     'django_filters',
+    'drf_yasg',
 ]
 SITE_ID = 1
 

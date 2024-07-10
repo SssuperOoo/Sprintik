@@ -1,0 +1,635 @@
+swagger: '2.0'
+info:
+  title: Pereval API
+  description: API для проекта Рос туризма
+  version: v1
+host: 127.0.0.1:8000
+schemes:
+- http
+basePath: /
+consumes:
+- application/json
+produces:
+- application/json
+securityDefinitions:
+  Basic:
+    type: basic
+security:
+- Basic: []
+paths:
+  /coord/:
+    get:
+      operationId: coord_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Coord'
+      tags:
+      - coord
+    post:
+      operationId: coord_create
+      description: ''
+      parameters:
+      - name: data
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/Coord'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/Coord'
+      tags:
+      - coord
+    parameters: []
+  /coord/{id}/:
+    get:
+      operationId: coord_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/Coord'
+      tags:
+      - coord
+    put:
+      operationId: coord_update
+      description: ''
+      parameters:
+      - name: data
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/Coord'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/Coord'
+      tags:
+      - coord
+    patch:
+      operationId: coord_partial_update
+      description: ''
+      parameters:
+      - name: data
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/Coord'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/Coord'
+      tags:
+      - coord
+    delete:
+      operationId: coord_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+      - coord
+    parameters:
+    - name: id
+      in: path
+      description: A unique integer value identifying this coord.
+      required: true
+      type: integer
+  /images/:
+    get:
+      operationId: images_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/PerevalImages'
+      tags:
+      - images
+    post:
+      operationId: images_create
+      description: ''
+      parameters:
+      - name: data
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/PerevalImages'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/PerevalImages'
+      tags:
+      - images
+    parameters: []
+  /images/{id}/:
+    get:
+      operationId: images_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/PerevalImages'
+      tags:
+      - images
+    put:
+      operationId: images_update
+      description: ''
+      parameters:
+      - name: data
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/PerevalImages'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/PerevalImages'
+      tags:
+      - images
+    patch:
+      operationId: images_partial_update
+      description: ''
+      parameters:
+      - name: data
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/PerevalImages'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/PerevalImages'
+      tags:
+      - images
+    delete:
+      operationId: images_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+      - images
+    parameters:
+    - name: id
+      in: path
+      description: A unique integer value identifying this pereval images.
+      required: true
+      type: integer
+  /level/:
+    get:
+      operationId: level_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Level'
+      tags:
+      - level
+    post:
+      operationId: level_create
+      description: ''
+      parameters:
+      - name: data
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/Level'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/Level'
+      tags:
+      - level
+    parameters: []
+  /level/{id}/:
+    get:
+      operationId: level_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/Level'
+      tags:
+      - level
+    put:
+      operationId: level_update
+      description: ''
+      parameters:
+      - name: data
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/Level'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/Level'
+      tags:
+      - level
+    patch:
+      operationId: level_partial_update
+      description: ''
+      parameters:
+      - name: data
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/Level'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/Level'
+      tags:
+      - level
+    delete:
+      operationId: level_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+      - level
+    parameters:
+    - name: id
+      in: path
+      description: A unique integer value identifying this level.
+      required: true
+      type: integer
+  /submitData/:
+    get:
+      operationId: submitData_list
+      description: ''
+      parameters:
+      - name: user__email
+        in: query
+        description: user__email
+        required: false
+        type: string
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Pereval'
+      tags:
+      - submitData
+    post:
+      operationId: submitData_create
+      description: ''
+      parameters:
+      - name: data
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/Pereval'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/Pereval'
+      tags:
+      - submitData
+    parameters: []
+  /submitData/{id}/:
+    get:
+      operationId: submitData_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/Pereval'
+      tags:
+      - submitData
+    put:
+      operationId: submitData_update
+      description: ''
+      parameters:
+      - name: data
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/Pereval'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/Pereval'
+      tags:
+      - submitData
+    patch:
+      operationId: submitData_partial_update
+      description: ''
+      parameters:
+      - name: data
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/Pereval'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/Pereval'
+      tags:
+      - submitData
+    delete:
+      operationId: submitData_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+      - submitData
+    parameters:
+    - name: id
+      in: path
+      description: A unique integer value identifying this pereval.
+      required: true
+      type: integer
+  /users/:
+    get:
+      operationId: users_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Users'
+      tags:
+      - users
+    post:
+      operationId: users_create
+      description: ''
+      parameters:
+      - name: data
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/Users'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/Users'
+      tags:
+      - users
+    parameters: []
+  /users/{id}/:
+    get:
+      operationId: users_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/Users'
+      tags:
+      - users
+    put:
+      operationId: users_update
+      description: ''
+      parameters:
+      - name: data
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/Users'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/Users'
+      tags:
+      - users
+    patch:
+      operationId: users_partial_update
+      description: ''
+      parameters:
+      - name: data
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/Users'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/Users'
+      tags:
+      - users
+    delete:
+      operationId: users_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+      - users
+    parameters:
+    - name: id
+      in: path
+      description: A unique integer value identifying this user.
+      required: true
+      type: integer
+definitions:
+  Coord:
+    required:
+    - latitude
+    - longitude
+    - height
+    type: object
+    properties:
+      latitude:
+        title: Latitude
+        type: string
+        format: decimal
+      longitude:
+        title: Longitude
+        type: string
+        format: decimal
+      height:
+        title: Height
+        type: integer
+        maximum: 2147483647
+        minimum: -2147483648
+  PerevalImages:
+    required:
+    - title
+    - img
+    type: object
+    properties:
+      title:
+        title: Title
+        type: string
+        maxLength: 255
+        minLength: 1
+      img:
+        title: Img
+        type: string
+        format: uri
+        minLength: 1
+  Level:
+    type: object
+    properties:
+      winter:
+        title: Winter
+        type: string
+        enum:
+        - 1A
+        - 2A
+        - 3A
+        - 4A
+      summer:
+        title: Summer
+        type: string
+        enum:
+        - 1A
+        - 2A
+        - 3A
+        - 4A
+      autumn:
+        title: Autumn
+        type: string
+        enum:
+        - 1A
+        - 2A
+        - 3A
+        - 4A
+      spring:
+        title: Spring
+        type: string
+        enum:
+        - 1A
+        - 2A
+        - 3A
+        - 4A
+  Users:
+    required:
+    - email
+    - fam
+    - name
+    - otc
+    - phone
+    type: object
+    properties:
+      email:
+        title: Email
+        type: string
+        format: email
+        maxLength: 255
+        minLength: 1
+      fam:
+        title: Fam
+        type: string
+        maxLength: 255
+        minLength: 1
+      name:
+        title: Name
+        type: string
+        maxLength: 255
+        minLength: 1
+      otc:
+        title: Otc
+        type: string
+        maxLength: 255
+        minLength: 1
+      phone:
+        title: Phone
+        type: string
+        maxLength: 255
+        minLength: 1
+  Pereval:
+    required:
+    - beauty_title
+    - title
+    - other_title
+    - connect
+    - user
+    - coord
+    - level
+    - images
+    type: object
+    properties:
+      status:
+        title: Status
+        type: string
+        enum:
+        - new
+        - pending
+        - accepted
+        - rejected
+      beauty_title:
+        title: Beauty title
+        type: string
+        maxLength: 255
+        minLength: 1
+      title:
+        title: Title
+        type: string
+        maxLength: 255
+        minLength: 1
+      other_title:
+        title: Other title
+        type: string
+        maxLength: 255
+        minLength: 1
+      connect:
+        title: Connect
+        type: string
+        minLength: 1
+      add_time:
+        title: Add time
+        type: string
+        format: date-time
+        readOnly: true
+      user:
+        $ref: '#/definitions/Users'
+      coord:
+        $ref: '#/definitions/Coord'
+      level:
+        $ref: '#/definitions/Level'
+      images:
+        type: array
+        items:
+          $ref: '#/definitions/PerevalImages'
